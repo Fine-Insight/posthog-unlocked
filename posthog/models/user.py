@@ -65,10 +65,14 @@ class UserManager(BaseUserManager):
         **user_fields,
     ) -> Tuple["Organization", "Team", "User"]:
         """Instead of doing the legwork of creating a user from scratch, delegate the details with bootstrap."""
+        """开启一个显示控制事物"""
         with transaction.atomic():
             organization_fields = organization_fields or {}
+            # 从字典中取值，如果没有就设置一个
             organization_fields.setdefault("name", organization_name)
+            # 创建组织机构
             organization = Organization.objects.create(**organization_fields)
+            # 创建用户
             user = self.create_user(
                 email=email, password=password, first_name=first_name, is_staff=is_staff, **user_fields
             )
@@ -76,6 +80,7 @@ class UserManager(BaseUserManager):
                 team = create_team(organization, user)
             else:
                 team = Team.objects.create_with_data(user=user, organization=organization, **(team_fields or {}))
+            # 将用户和组织机构关联 OrganizationMembership 表拥有外键
             user.join(organization=organization, level=OrganizationMembership.Level.OWNER)
             return organization, team, user
 

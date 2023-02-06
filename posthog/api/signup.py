@@ -62,11 +62,18 @@ class SignupSerializer(serializers.Serializer):
     def create(self, validated_data, **kwargs):
         if settings.DEMO:
             return self.enter_demo(validated_data)
-
+        
+        # 查看一下本次操作是不是创建的第一个用户，如果是第一个用户那么创建的是一个管理员
         is_instance_first_user: bool = not User.objects.exists()
 
+        # 从 validated_data 中提取 organization_name 如果不存在就提取 first_name
+        # 组织机构名称
         organization_name = validated_data.pop("organization_name", validated_data["first_name"])
+
+        # 从 validated_data 中提取 role_at_organization 如果不存在就默认为空字符
+        # 在组织机构中的职位作用
         role_at_organization = validated_data.pop("role_at_organization", "")
+        # 推荐的来源
         referral_source = validated_data.pop("referral_source", "")
 
         try:
@@ -85,6 +92,7 @@ class SignupSerializer(serializers.Serializer):
 
         login(self.context["request"], user, backend="django.contrib.auth.backends.ModelBackend")
 
+        # 通知用户注册
         report_user_signed_up(
             user,
             is_instance_first_user=is_instance_first_user,
