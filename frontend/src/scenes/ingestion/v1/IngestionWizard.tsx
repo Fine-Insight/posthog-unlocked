@@ -25,6 +25,11 @@ export function IngestionWizardV1(): JSX.Element {
     const { platform, framework, verify, addBilling } = useValues(ingestionLogic)
     const { reportIngestionLandingSeen } = useActions(eventUsageLogic)
 
+    console.log('platform,', platform)
+    console.log('framework', framework)
+    console.log('verify', verify)
+    console.log('addBilling', addBilling)
+
     useEffect(() => {
         if (!platform) {
             reportIngestionLandingSeen()

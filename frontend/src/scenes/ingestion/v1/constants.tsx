@@ -11,7 +11,8 @@ export const MOBILE = 'Mobile'
 export const BACKEND = 'Backend'
 export const THIRD_PARTY = 'Import events from a third party'
 export const BOOKMARKLET = 'Just exploring?'
-export const platforms: PlatformType[] = [WEB, MOBILE, BACKEND]
+// export const platforms: PlatformType[] = [WEB, MOBILE, BACKEND]
+export const platforms: PlatformType[] = [WEB]
 
 export const NODEJS = 'NODEJS'
 export const GO = 'GO'

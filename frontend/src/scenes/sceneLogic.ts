@@ -186,6 +186,7 @@ export const sceneLogic = kea<sceneLogicType>({
                 )
             }
         }
+
         for (const [path, scene] of Object.entries(routes)) {
             mapping[path] = (params, searchParams, hashParams, { method }) =>
                 actions.openScene(scene, { params, searchParams, hashParams }, method)
@@ -254,7 +255,6 @@ export const sceneLogic = kea<sceneLogicType>({
                     }
                     return
                 }
-
                 // Redirect to org/project creation if there's no org/project respectively, unless using invite
                 if (scene !== Scene.InviteSignup) {
                     if (organizationLogic.values.isCurrentOrganizationUnavailable) {

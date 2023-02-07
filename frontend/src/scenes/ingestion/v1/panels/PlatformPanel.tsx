@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 import { ingestionLogic } from 'scenes/ingestion/v1/ingestionLogic'
-import { THIRD_PARTY, BOOKMARKLET, platforms } from 'scenes/ingestion/v1/constants'
+import { platforms } from 'scenes/ingestion/v1/constants'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import './Panels.scss'
 import { LemonDivider } from 'lib/lemon-ui/LemonDivider'
@@ -10,13 +10,23 @@ export function PlatformPanel(): JSX.Element {
 
     return (
         <div>
-            <h1 className="ingestion-title">Welcome to PostHog</h1>
-            <p>
-                First things first, where do you want to send events from? You can always instrument more sources later.
-            </p>
+            <h1 className="ingestion-title">欢迎使用 Authing Insight</h1>
+            {/* <p>首先，您想从哪里发送事件？ 您以后可以随时检测更多来源。</p> */}
             <LemonDivider thick dashed className="my-6" />
             <div className="flex flex-col mb-6">
-                {platforms.map((platform) => (
+                <LemonButton
+                    key={platforms[0]}
+                    fullWidth
+                    center
+                    size="large"
+                    type="primary"
+                    className="mb-2"
+                    onClick={() => setPlatform(platforms[0])}
+                >
+                    开始
+                </LemonButton>
+
+                {/* {platforms.map((platform) => (
                     <LemonButton
                         key={platform}
                         fullWidth
@@ -28,8 +38,8 @@ export function PlatformPanel(): JSX.Element {
                     >
                         {platform}
                     </LemonButton>
-                ))}
-                <LemonButton
+                ))} */}
+                {/* <LemonButton
                     onClick={() => setPlatform(THIRD_PARTY)}
                     fullWidth
                     center
@@ -38,10 +48,10 @@ export function PlatformPanel(): JSX.Element {
                     type="primary"
                 >
                     {THIRD_PARTY}
-                </LemonButton>
-                <LemonButton type="secondary" size="large" fullWidth center onClick={() => setPlatform(BOOKMARKLET)}>
+                </LemonButton> */}
+                {/* <LemonButton type="secondary" size="large" fullWidth center onClick={() => setPlatform(BOOKMARKLET)}>
                     {BOOKMARKLET}
-                </LemonButton>
+                </LemonButton> */}
             </div>
         </div>
     )

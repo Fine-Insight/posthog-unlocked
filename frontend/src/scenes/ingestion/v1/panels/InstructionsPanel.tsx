@@ -51,9 +51,7 @@ export function InstructionsPanel(): JSX.Element {
                 <CardContainer showFooter>
                     <h2>{frameworkString}</h2>
                     <p className="prompt-text">
-                        {
-                            "Below is an easy format for capturing events using the API we've provided. Use this endpoint to send your first event!"
-                        }
+                        {'下面是使用我们提供的 API 捕获事件的简单格式。 使用此端点发送您的第一个事件！'}
                     </p>
                     <FrameworkSnippet />
                 </CardContainer>
@@ -64,7 +62,7 @@ export function InstructionsPanel(): JSX.Element {
                     {platform === BACKEND ? (
                         <>
                             <p className="prompt-text">
-                                {`Follow the instructions below to send custom events from your ${frameworkString} backend.`}
+                                {`按照以下说明从您的网站发送自定义事件 ${frameworkString} 后端.`}
                             </p>
                             <FrameworkSnippet />
                         </>

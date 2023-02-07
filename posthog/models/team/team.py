@@ -128,8 +128,8 @@ class Team(UUIDClassicModel):
     created_at: models.DateTimeField = models.DateTimeField(auto_now_add=True)
     updated_at: models.DateTimeField = models.DateTimeField(auto_now=True)
     anonymize_ips: models.BooleanField = models.BooleanField(default=False)
-    completed_snippet_onboarding: models.BooleanField = models.BooleanField(default=False)
-    ingested_event: models.BooleanField = models.BooleanField(default=False)
+    completed_snippet_onboarding: models.BooleanField = models.BooleanField(default=False)  # 完成了xxx的引导
+    ingested_event: models.BooleanField = models.BooleanField(default=False)  # 提取过事件
     session_recording_opt_in: models.BooleanField = models.BooleanField(default=False)
     capture_console_log_opt_in: models.BooleanField = models.BooleanField(null=True, blank=True)
     capture_performance_opt_in: models.BooleanField = models.BooleanField(null=True, blank=True)
