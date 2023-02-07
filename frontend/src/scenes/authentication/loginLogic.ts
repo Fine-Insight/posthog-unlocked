@@ -113,7 +113,7 @@ export const loginLogic = kea<loginLogicType>([
         submitLoginSuccess: () => {
             handleLoginRedirect()
             // Reload the page after login to ensure POSTHOG_APP_CONTEXT is set correctly.
-            window.location.reload()
+            // window.location.reload()
         },
     }),
     urlToAction(({ actions }) => ({

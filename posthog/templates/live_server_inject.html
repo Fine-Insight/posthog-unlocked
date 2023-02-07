@@ -4,7 +4,7 @@
     if ('EventSource' in window) {
         ;(function () {
             var jsUrl = '{{ js_url }}'.replace(/\/$/, '')
-            var eventSource = new EventSource(jsUrl + '/_reload');
+            var eventSource = new EventSource(jsUrl + '/_reload')
             eventSource.onmessage = () => window.location.reload()
             console.log('Live reload enabled.')
         })()
