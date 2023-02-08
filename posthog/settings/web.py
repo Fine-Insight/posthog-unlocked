@@ -55,6 +55,7 @@ MIDDLEWARE = [
     "posthog.middleware.AllowIPMiddleware",
     "google.cloud.sqlcommenter.django.middleware.SqlCommenter",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "posthog.middleware.CsrfOrKeyViewMiddleware",

@@ -4,13 +4,14 @@ import { platforms } from 'scenes/ingestion/v1/constants'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import './Panels.scss'
 import { LemonDivider } from 'lib/lemon-ui/LemonDivider'
+import { useTranslation } from 'react-i18next'
 
 export function PlatformPanel(): JSX.Element {
     const { setPlatform } = useActions(ingestionLogic)
-
+    const { t } = useTranslation()
     return (
         <div>
-            <h1 className="ingestion-title">欢迎使用 Authing Insight</h1>
+            <h1 className="ingestion-title">{t('common.title')}</h1>
             {/* <p>首先，您想从哪里发送事件？ 您以后可以随时检测更多来源。</p> */}
             <LemonDivider thick dashed className="my-6" />
             <div className="flex flex-col mb-6">

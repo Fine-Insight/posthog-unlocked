@@ -8,9 +8,11 @@ import { initKea } from './initKea'
 
 import { loadPostHogJS } from './loadPostHogJS'
 import { ErrorBoundary } from './layout/ErrorBoundary'
+import { initI18n } from './initI18n'
 
 loadPostHogJS()
 initKea()
+initI18n()
 
 // Expose `window.getReduxState()` to make snapshots to storybook easy
 if (typeof window !== 'undefined') {
