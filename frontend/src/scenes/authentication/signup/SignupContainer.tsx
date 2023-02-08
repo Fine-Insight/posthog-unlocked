@@ -39,8 +39,9 @@ export function SignupContainer(): JSX.Element | null {
                     ))}
                 </>
             }
-            sideLogo
-            leftContainerContent={<SignupLeftContainer />}
+            // sideLogo
+            // leftContainerContent={<SignupLeftContainer />}
+            leftContainerContent={<></>}
         >
             <SignupForm />
         </BridgePage>

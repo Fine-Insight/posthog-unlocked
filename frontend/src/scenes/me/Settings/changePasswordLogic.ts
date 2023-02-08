@@ -5,7 +5,7 @@ import api from 'lib/api'
 import { userLogic } from 'scenes/userLogic'
 
 import type { changePasswordLogicType } from './changePasswordLogicType'
-
+import i18n from 'src/initI18n'
 export interface ChangePasswordForm {
     current_password: string
     password: string
@@ -25,9 +25,9 @@ export const changePasswordLogic = kea<changePasswordLogicType>([
                         ? 'Please enter your current password'
                         : undefined,
                 password: !password
-                    ? 'Please enter your password to continue'
+                    ? i18n.t('common.signup.passwordRoles.02')
                     : password.length < 8
-                    ? 'Password must be at least 8 characters'
+                    ? i18n.t('common.signup.passwordRoles.01')
                     : undefined,
             }),
             submit: async ({ password, current_password }, breakpoint) => {

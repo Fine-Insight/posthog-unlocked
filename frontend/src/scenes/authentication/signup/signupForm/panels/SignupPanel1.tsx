@@ -8,11 +8,13 @@ import { SocialLoginButtons } from 'lib/components/SocialLoginButton'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import { signupLogic } from '../signupLogic'
 import { Link } from 'lib/lemon-ui/Link'
+import { useTranslation } from 'react-i18next'
 
 export function SignupPanel1(): JSX.Element | null {
     const { preflight } = useValues(preflightLogic)
     const { isSignupPanel1Submitting, signupPanel1 } = useValues(signupLogic)
     const emailInputRef = useRef<HTMLInputElement | null>(null)
+    const { t } = useTranslation()
 
     useEffect(() => {
         // There's no password in the demo environment
@@ -26,11 +28,11 @@ export function SignupPanel1(): JSX.Element | null {
                     <div className="mt-6">
                         <SocialLoginButtons caption="Sign up with" bottomDivider />
                     </div>
-                    <p className="text-muted text-center mb-0">Or use email & password</p>
+                    <p className="text-muted text-center mb-0">{t('common.signup.signupDes')}</p>
                 </>
             )}
             <Form logic={signupLogic} formKey={'signupPanel1'} className="space-y-4" enableFormOnSubmit>
-                <Field name="email" label="Email">
+                <Field name="email" label={t('common.email')}>
                     <LemonInput
                         className="ph-ignore-input"
                         autoFocus
@@ -46,7 +48,7 @@ export function SignupPanel1(): JSX.Element | null {
                         name="password"
                         label={
                             <div className="flex flex-1 items-center justify-between">
-                                <span>Password</span>
+                                <span>{t('common.password')}</span>
                                 <span className="w-20">
                                     <PasswordStrength password={signupPanel1.password} />
                                 </span>
@@ -72,7 +74,7 @@ export function SignupPanel1(): JSX.Element | null {
                     loading={isSignupPanel1Submitting}
                     disabled={isSignupPanel1Submitting}
                 >
-                    Continue
+                    {t('common.continue')}
                 </LemonButton>
             </Form>
             {!preflight?.demo && (preflight?.cloud || preflight?.initiated) && (
@@ -80,9 +82,9 @@ export function SignupPanel1(): JSX.Element | null {
                 // For now, if you're not on Cloud, you wouldn't see this page,
                 // but future-proofing this (with `preflight.initiated`) in case this changes
                 <div className="text-center mt-4">
-                    Already have an account?{' '}
+                    {t('common.signup.ready')}{' '}
                     <Link to="/login" data-attr="signup-login-link" className="font-bold">
-                        Log in
+                        {t('common.login')}
                     </Link>
                 </div>
             )}

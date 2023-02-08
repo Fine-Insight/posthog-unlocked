@@ -1,3 +1,19 @@
 {
-    "title": "Authing Insight"
+    "title": "Authing Insight",
+    "signup": {
+        "signupError": "Could not complete your signup. Please try again.",
+        "signupDes": "Or use email & password",
+        "ready": "Already have an account?",
+        "passwordRoles": {
+            "01": "Password must be at least 8 characters",
+            "02": "Please enter your password to continue"
+        },
+        "emailRoles": {
+            "01": "Please use a valid email address"
+        }
+    },
+    "email": "Email",
+    "password": "Password",
+    "login": "Log in",
+    "continue": "Continue"
 }

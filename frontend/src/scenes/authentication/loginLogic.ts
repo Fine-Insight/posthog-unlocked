@@ -9,7 +9,7 @@ import { SSOProviders } from '~/types'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
-
+import i18n from 'src/initI18n'
 export interface AuthenticateResponseType {
     success: boolean
     errorCode?: string
@@ -88,9 +88,9 @@ export const loginLogic = kea<loginLogicType>([
             errors: ({ email, password }) => ({
                 email: !email ? 'Please enter your email to continue' : undefined,
                 password: !password
-                    ? 'Please enter your password to continue'
+                    ? i18n.t('common.signup.passwordRoles.02')
                     : password.length < 8
-                    ? 'Password must be at least 8 characters'
+                    ? i18n.t('common.signup.passwordRoles.01')
                     : undefined,
             }),
             submit: async ({ email, password }, breakpoint) => {

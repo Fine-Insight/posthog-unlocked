@@ -6,6 +6,7 @@ import api from 'lib/api'
 import { lemonToast } from 'lib/lemon-ui/lemonToast'
 import { PrevalidatedInvite } from '~/types'
 import type { inviteSignupLogicType } from './inviteSignupLogicType'
+import i18n from 'src/initI18n'
 
 export enum ErrorCodes {
     InvalidInvite = 'invalid_invite',
@@ -80,9 +81,9 @@ export const inviteSignupLogic = kea<inviteSignupLogicType>([
             defaults: { email_opt_in: true, role_at_organization: '' } as AcceptInvitePayloadInterface,
             errors: ({ password, first_name }) => ({
                 password: !password
-                    ? 'Please enter your password to continue'
+                    ? i18n.t('common.signup.passwordRoles.02')
                     : password.length < 8
-                    ? 'Password must be at least 8 characters'
+                    ? i18n.t('common.signup.passwordRoles.01')
                     : undefined,
                 first_name: !first_name ? 'Please enter your name' : undefined,
             }),

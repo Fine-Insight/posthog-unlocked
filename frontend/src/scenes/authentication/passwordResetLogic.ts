@@ -5,7 +5,7 @@ import { forms } from 'kea-forms'
 import api from 'lib/api'
 import { lemonToast } from 'lib/lemon-ui/lemonToast'
 import type { passwordResetLogicType } from './passwordResetLogicType'
-
+import i18n from 'src/initI18n'
 export interface ResponseType {
     success: boolean
     errorCode?: string
@@ -77,9 +77,9 @@ export const passwordResetLogic = kea<passwordResetLogicType>([
             defaults: {} as unknown as PasswordResetForm,
             errors: ({ password, passwordConfirm }) => ({
                 password: !password
-                    ? 'Please enter your password to continue'
+                    ? i18n.t('common.signup.passwordRoles.02')
                     : password.length < 8
-                    ? 'Password must be at least 8 characters'
+                    ? i18n.t('common.signup.passwordRoles.01')
                     : undefined,
                 passwordConfirm: !passwordConfirm
                     ? 'Please confirm your password to continue'

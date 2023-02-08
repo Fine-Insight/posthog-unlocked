@@ -4,16 +4,19 @@ import defaultLogo from 'public/posthog-logo-default.svg'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import { useValues } from 'kea'
 
-export function WelcomeLogo({ view }: { view?: string }): JSX.Element {
-    const UTM_TAGS = `utm_campaign=in-product&utm_tag=${view || 'welcome'}-header`
+export function WelcomeLogo({}: { view?: string }): JSX.Element {
+    // const UTM_TAGS = `utm_campaign=in-product&utm_tag=${view || 'welcome'}-header`
     const { preflight } = useValues(preflightLogic)
 
     return (
-        <a href={`https://posthog.com?${UTM_TAGS}`}>
+        <a //href={`https://posthog.com?${UTM_TAGS}`}
+            href={`https://www.authing.com`}
+        >
             <div className="header-logo">
                 <img
                     src={preflight?.demo ? demoLogo : preflight?.cloud ? cloudLogo : defaultLogo}
-                    alt={`PostHog${preflight?.cloud ? ' Cloud' : ''}`}
+                    // alt={`PostHog${preflight?.cloud ? ' Cloud' : ''}`}
+                    alt="Authing Insight"
                 />
             </div>
         </a>

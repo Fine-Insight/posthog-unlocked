@@ -4,7 +4,7 @@ import { forms } from 'kea-forms'
 import api from 'lib/api'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import type { signupLogicType } from './signupLogicType'
-
+import i18n from 'src/initI18n'
 export interface AccountResponse {
     success: boolean
     redirect_url?: string
@@ -52,13 +52,13 @@ export const signupLogic = kea<signupLogicType>([
                 email: !email
                     ? 'Please enter your email to continue'
                     : !emailRegex.test(email)
-                    ? 'Please use a valid email address'
+                    ? i18n.t('common.signup.emailRoles.01')
                     : undefined,
                 password: !values.preflight?.demo
                     ? !password
-                        ? 'Please enter your password to continue'
+                        ? i18n.t('common.signup.passwordRoles.02')
                         : password.length < 8
-                        ? 'Password must be at least 8 characters'
+                        ? i18n.t('common.signup.passwordRoles.01')
                         : undefined
                     : undefined,
             }),

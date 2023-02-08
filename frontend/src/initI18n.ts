@@ -41,6 +41,16 @@ export function changeLang(lang: Lang): void {
     window.location.reload()
 }
 
+i18n.use(initReactI18next).init({
+    fallbackLng: Lang.zhCn,
+    resources: resources,
+    debug: false,
+    interpolation: {
+        escapeValue: false,
+    },
+})
+i18n.changeLanguage(getInitLang())
+
 export function initI18n(): void {
     i18n.use(initReactI18next).init({
         fallbackLng: Lang.zhCn,
@@ -52,3 +62,5 @@ export function initI18n(): void {
     })
     i18n.changeLanguage(getInitLang())
 }
+
+export default i18n

@@ -11,6 +11,8 @@ import { SpinnerOverlay } from 'lib/lemon-ui/Spinner/Spinner'
 import { SignupPanel1 } from './panels/SignupPanel1'
 import { SignupPanel2 } from './panels/SignupPanel2'
 
+import { useTranslation } from 'react-i18next'
+
 export const scene: SceneExport = {
     component: SignupForm,
     logic: signupLogic,
@@ -22,6 +24,7 @@ export function SignupForm(): JSX.Element | null {
     const { isSignupPanel2Submitting, signupPanel2ManualErrors, panel } = useValues(signupLogic)
     const { setPanel } = useActions(signupLogic)
     const [showSpinner, setShowSpinner] = useState(true)
+    const { t } = useTranslation()
 
     useEffect(() => {
         setShowSpinner(true)
@@ -42,7 +45,7 @@ export function SignupForm(): JSX.Element | null {
             </h2>
             {!isSignupPanel2Submitting && signupPanel2ManualErrors?.generic && (
                 <AlertMessage type="error">
-                    {signupPanel2ManualErrors.generic?.detail || 'Could not complete your signup. Please try again.'}
+                    {signupPanel2ManualErrors.generic?.detail || t('common.signup.signupError')}
                 </AlertMessage>
             )}
             {panel === 0 ? (
