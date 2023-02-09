@@ -36,6 +36,7 @@ import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { LemonButtonPropsBase } from '@posthog/lemon-ui'
 import { eventUsageLogic } from 'lib/utils/eventUsageLogic'
 import { billingLogic } from 'scenes/billing/billingLogic'
+import { useTranslation } from 'react-i18next'
 
 function SitePopoverSection({ title, children }: { title?: string | JSX.Element; children: any }): JSX.Element {
     return (
@@ -105,6 +106,7 @@ export function InviteMembersButton({
     const { closeSitePopover } = useActions(navigationLogic)
     const { showInviteModal } = useActions(inviteLogic)
     const { reportInviteMembersButtonClicked } = useActions(eventUsageLogic)
+    const { t } = useTranslation()
 
     return (
         <LemonButton
@@ -119,7 +121,7 @@ export function InviteMembersButton({
             fullWidth
             data-attr="top-menu-invite-team-members"
         >
-            Invite members
+            {t('common.ingestion.inviteMembers')}
         </LemonButton>
     )
 }

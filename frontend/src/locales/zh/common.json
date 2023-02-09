@@ -1,19 +1,29 @@
 {
-    "title": "Authing Insight",
-    "signup": {
-        "signupError": "无法完成注册，请再试一次",
-        "signupDes": "或使用电子邮件和密码",
-        "ready": "已有帐户？",
-        "passwordRoles": {
-            "01": "密码必须至少8个字符",
-            "02": "请输入您的密码以继续"
-        },
-        "emailRoles": {
-            "01": "请使用有效的电子邮件地址"
-        }
+  "title": "Authing Insight",
+  "signup": {
+    "signupError": "无法完成注册，请再试一次",
+    "signupDes": "或使用电子邮件和密码",
+    "ready": "已有帐户？",
+    "passwordRoles": {
+      "01": "密码必须至少8个字符",
+      "02": "请输入您的密码以继续"
     },
-    "email": "邮箱",
-    "password": "密码",
-    "login": "登录",
-    "continue": "继续"
+    "emailRoles": {
+      "01": "请使用有效的电子邮件地址"
+    }
+  },
+  "logins": {
+    "dontaccount": "还没有账号？",
+    "createAccount": "创建账号"
+  },
+  "email": "邮箱",
+  "password": "密码",
+  "login": "登录",
+  "continue": "继续",
+  "ingestion": {
+    "inviteMembers": "邀请成员",
+    "steps": {
+      "start": "Get started"
+    }
+  }
 }

@@ -12,8 +12,15 @@
             "01": "Please use a valid email address"
         }
     },
+    "logins": {
+        "dontaccount": "Don't have an account yet?",
+        "createAccount": "Create an account"
+    },
     "email": "Email",
     "password": "Password",
     "login": "Log in",
-    "continue": "Continue"
+    "continue": "Continue",
+    "ingestion": {
+        "inviteMembers": "Invite members"
+    }
 }

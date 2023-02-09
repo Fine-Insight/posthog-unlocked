@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import { WelcomeLogo } from 'scenes/authentication/WelcomeLogo'
+// import { WelcomeLogo } from 'scenes/authentication/WelcomeLogo'
 import { CSSTransition } from 'react-transition-group'
 import './BridgePage.scss'
 import { LaptopHog3 } from '../hedgehogs'
@@ -35,7 +35,7 @@ export function BridgePage({
     className,
     header,
     footer,
-    view,
+    // view,
     message,
     noLogo = false,
     sideLogo = false,
@@ -82,7 +82,7 @@ export function BridgePage({
                 <div className="BridgePage__content-wrapper">
                     {!noLogo && (
                         <div className={clsx('BridgePage__header-logo', { mobile: sideLogo })}>
-                            <WelcomeLogo view={view} />
+                            {/* <WelcomeLogo view={view} /> */}
                         </div>
                     )}
                     <div className="BridgePage__header">{header}</div>

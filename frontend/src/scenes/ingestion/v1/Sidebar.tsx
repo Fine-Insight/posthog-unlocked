@@ -4,16 +4,19 @@ import './IngestionWizard.scss'
 import { InviteMembersButton } from '~/layout/navigation/TopBar/SitePopover'
 import { eventUsageLogic } from 'lib/utils/eventUsageLogic'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
-import { IconArticle, IconQuestionAnswer } from 'lib/lemon-ui/icons'
-import { HelpType } from '~/types'
+//import { IconArticle, IconQuestionAnswer } from 'lib/lemon-ui/icons'
+// import { HelpType } from '~/types'
 import { LemonDivider } from 'lib/lemon-ui/LemonDivider'
 
-const HELP_UTM_TAGS = '?utm_medium=in-product-onboarding&utm_campaign=help-button-sidebar'
+// const HELP_UTM_TAGS = '?utm_medium=in-product-onboarding&utm_campaign=help-button-sidebar'
 
 export function Sidebar(): JSX.Element {
     const { currentStep, sidebarSteps } = useValues(ingestionLogic)
     const { sidebarStepClick } = useActions(ingestionLogic)
-    const { reportIngestionHelpClicked, reportIngestionSidebarButtonClicked } = useActions(eventUsageLogic)
+    const {
+        //reportIngestionHelpClicked,
+        reportIngestionSidebarButtonClicked,
+    } = useActions(eventUsageLogic)
 
     const currentIndex = sidebarSteps.findIndex((x) => x === currentStep)
 
@@ -39,7 +42,7 @@ export function Sidebar(): JSX.Element {
                     <InviteMembersButton center={true} type="primary" />
                     <LemonDivider thick dashed className="my-6" />
                     <div className="IngestionSidebar__help">
-                        <a href={`https://posthog.com/slack${HELP_UTM_TAGS}`} rel="noopener" target="_blank">
+                        {/* <a href={`https://posthog.com/slack${HELP_UTM_TAGS}`} rel="noopener" target="_blank">
                             <LemonButton
                                 icon={<IconQuestionAnswer />}
                                 fullWidth
@@ -49,8 +52,8 @@ export function Sidebar(): JSX.Element {
                             >
                                 Get support on Slack
                             </LemonButton>
-                        </a>
-                        <a
+                        </a> */}
+                        {/* <a
                             href={`https://posthog.com/docs/integrate/ingest-live-data${HELP_UTM_TAGS}`}
                             rel="noopener"
                             target="_blank"
@@ -65,7 +68,7 @@ export function Sidebar(): JSX.Element {
                             >
                                 Read our documentation
                             </LemonButton>
-                        </a>
+                        </a> */}
                     </div>
                 </div>
             </div>

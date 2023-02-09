@@ -15,6 +15,7 @@ import { Form } from 'kea-forms'
 import { Field } from 'lib/forms/Field'
 import { AlertMessage } from 'lib/lemon-ui/AlertMessage'
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'
+import { useTranslation } from 'react-i18next'
 import RegionSelect from './RegionSelect'
 
 export const ERROR_MESSAGES: Record<string, string | JSX.Element> = {
@@ -80,6 +81,8 @@ export function Login(): JSX.Element {
     const passwordInputRef = useRef<HTMLInputElement>(null)
     const isPasswordHidden = precheckResponse.status === 'pending' || precheckResponse.sso_enforcement
 
+    const { t } = useTranslation()
+
     useEffect(() => {
         if (!isPasswordHidden) {
             passwordInputRef.current?.focus()
@@ -89,16 +92,16 @@ export function Login(): JSX.Element {
     return (
         <BridgePage
             view="login"
-            hedgehog
-            message={
-                <>
-                    Welcome to
-                    <br /> PostHog{preflight?.cloud ? ' Cloud' : ''}!
-                </>
-            }
+            // hedgehog
+            // message={
+            //     <>
+            //         Welcome to
+            //         <br /> PostHog{preflight?.cloud ? ' Cloud' : ''}!
+            //     </>
+            // }
         >
             <div className="space-y-2">
-                <h2>Log in</h2>
+                <h2>{t('common.login')}</h2>
                 {generalError && (
                     <AlertMessage type="error">
                         {generalError.detail ||
@@ -108,7 +111,7 @@ export function Login(): JSX.Element {
                 )}
                 <Form logic={loginLogic} formKey="login" enableFormOnSubmit className="space-y-4">
                     <RegionSelect />
-                    <Field name="email" label="Email">
+                    <Field name="email" label={t('common.email')}>
                         <LemonInput
                             className="ph-ignore-input"
                             autoFocus
@@ -126,10 +129,10 @@ export function Login(): JSX.Element {
                             name="password"
                             label={
                                 <div className="flex flex-1 items-center justify-between gap-2">
-                                    <span>Password</span>
-                                    <Link to="/reset" data-attr="forgot-password">
+                                    <span>{t('common.password')}</span>
+                                    {/* <Link to="/reset" data-attr="forgot-password">
                                         Forgot your password?
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             }
                         >
@@ -152,7 +155,7 @@ export function Login(): JSX.Element {
                             center
                             loading={isLoginSubmitting || precheckResponseLoading}
                         >
-                            Login
+                            {t('common.login')}
                         </LemonButton>
                     ) : (
                         <SSOLoginButton provider={precheckResponse.sso_enforcement} email={login.email} />
@@ -163,9 +166,9 @@ export function Login(): JSX.Element {
                 </Form>
                 {preflight?.cloud && (
                     <div className="text-center mt-4">
-                        Don't have an account?{' '}
+                        {t('common.logins.dontaccount')}{' '}
                         <Link to="/signup" data-attr="signup" className="font-bold">
-                            Create an account
+                            {t('common.logins.createAccount')}
                         </Link>
                     </div>
                 )}
